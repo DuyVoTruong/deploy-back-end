@@ -18,5 +18,4 @@ public interface SignUpService {
     NhaXe convertSignUpToNhaXe(SignUpRequest signUpRequest, TaiKhoan taiKhoan);
     User convertSignUpToUser(SignUpRequest signUpRequest, TaiKhoan taiKhoan);
     TaiKhoan convertSignUpToTaiKhoan(SignUpRequest signUpRequest);
-
 }

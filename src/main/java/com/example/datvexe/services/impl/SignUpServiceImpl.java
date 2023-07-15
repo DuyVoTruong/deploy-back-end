@@ -147,6 +147,7 @@ public class SignUpServiceImpl implements SignUpService {
         if (check != 5) return check;
 
         TaiKhoan taiKhoanNew = convertSignUpToTaiKhoan(signUpRequest);
+        taiKhoanNew.setVerifyEmail(true);
         String password = passwordEncoder.encode(signUpRequest.getPassword());
         taiKhoanNew.setPassword(password);
         TaiKhoan taiKhoanAdd = taiKhoanRepository.save(taiKhoanNew);
