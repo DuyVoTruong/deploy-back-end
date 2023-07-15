@@ -10,8 +10,7 @@ RUN mvn -f /home/app/pom.xml clean package
 # Package stage
 #
 FROM openjdk:11-jdk-slim
-VOLUME /tmp
 COPY --from=build /home/app/target/dat-ve-xe-0.0.1-SNAPSHOT.jar demo.jar
 # ENV PORT=8081
 EXPOSE 8081
-ENTRYPOINT ["java","-jar","demo.jar"]
+ENTRYPOINT ["java","-jar","/demo.jar"]
