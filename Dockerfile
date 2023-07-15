@@ -1,7 +1,7 @@
 #
 # Build stage
 #
-FROM maven:3.6.0-jdk-11-slim AS build
+FROM maven:3.8.3-openjdk-17 AS build
 WORKDIR /app
 COPY . /app/
 RUN mvn clean package
@@ -9,9 +9,9 @@ RUN mvn clean package
 #
 # Package stage
 #
-FROM openjdk:11-jdk-slim
+FROM openjdk:17-alpine
 WORKDIR /app
-COPY --from=build /app/target/*.jar /app/demo.jar
+COPY --from=build /app/target/*.jar /app/app.jar
 # ENV PORT=8081
 EXPOSE 8081
-ENTRYPOINT ["java","-jar","demo.jar"]
+ENTRYPOINT ["java","-jar","app.jar"]
